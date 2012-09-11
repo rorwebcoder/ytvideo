@@ -1,0 +1,11 @@
+
+<%= form_tag(video_validator_path) do -%>
+		<%= text_field_tag "yt_url", '', :size => "100x100" -%>
+		<%= submit_tag "Check" %>
+<% end %>
+
+<%= @message %>
+<br />
+<br />
+<br />
+<%= params.to_json %>
