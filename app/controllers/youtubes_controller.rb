@@ -10,7 +10,7 @@ class YoutubesController < ApplicationController
 		
 		def youtube_url_validator
 				if params[:yt_url].blank?# || params[:yt_url].length != 11
-						return false, "Invalid url"
+						return false, "Invalid blank url"
 				else
 						video_id = extract_video_id
 						if video_id
@@ -24,17 +24,20 @@ class YoutubesController < ApplicationController
 										return false, "Video not found"										
 								end
 						else
-								return false, "Invalid url"
+								return false, "Invalid youtube url"
 						end						
 				end				
 		end		
 		
 		def extract_video_id
-				#~ begin
-				uri = URI(params[:yt_url])
-				params = uri.query.split("&")
-				v_param = params.find {|p| p.include?("v=")}
-				v_param.split("v=").last
+				begin
+						uri = URI(params[:yt_url])
+						params = uri.query.split("&")
+						v_param = params.find {|p| p.include?("v=")}
+						return v_param.split("v=").last
+				rescue
+						return nil
+				end
 		end
 		
 end
