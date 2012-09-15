@@ -1,6 +1,7 @@
 Youtube::Application.routes.draw do
   #~ get "home/index"
   match 'youtubes/video_validator' => 'youtubes#video_validator', :as => :video_validator, :via => :post
+  match 'youtubes/video_validator' => 'youtubes#video_validator', :as => :video_validator, :via => :get
   root :to => "youtubes#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
