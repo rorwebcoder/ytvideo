@@ -1,11 +1,23 @@
 
-<%= form_tag(video_validator_path) do -%>
-		<%= text_field_tag "yt_url", '', :size => "100x100" -%>
-		<%= submit_tag "Check" %>
+<%= form_tag(video_validator_path, :class => "navbar-search pull-left") do -%>
+		<%= text_field_tag "yt_url", params[:yt_url] || '', :style => "width: 350px;", :class => "search-query", :placeholder => "Enter URL here.." -%>
 <% end %>
 
-<%= @message %>
 <br />
 <br />
 <br />
-<%= params.to_json %>
+<% if !@message.blank? %>
+		<div class="alert <%= @status ? "alert-success" : "alert-error" %>">
+				<button type="button" class="close" data-dismiss="alert">x</button>
+				<%= @message %>
+		</div>
+<% end %>
+<% if 1==2 %>
+		<br />
+		<br />
+		<br />
+		Params:
+		<div class="alert alert-info">
+				<%= params.to_json %>
+		</div>
+<% end %>

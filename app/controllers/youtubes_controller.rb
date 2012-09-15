@@ -3,14 +3,13 @@
 
 class YoutubesController < ApplicationController
 		def video_validator
-				puts params.inspect
 				@status, @message = youtube_url_validator				
 				render 'index'
 		end		
 		
 		def youtube_url_validator
 				if params[:yt_url].blank?# || params[:yt_url].length != 11
-						return false, "Invalid blank url"
+						return false, "Url cannot be blank"
 				else
 						video_id = extract_video_id
 						if video_id
@@ -20,7 +19,7 @@ class YoutubesController < ApplicationController
 										Video.create(:youtube_id => video_id, :is_valid => true)
 										return true, "Video found"
 								rescue OpenURI::HTTPError
-										Video.create(:youtube_id => video_id)
+										#~ Video.create(:youtube_id => video_id)
 										return false, "Video not found"										
 								end
 						else

@@ -38,3 +38,12 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+# bootstrap-sass for sass powered Twitter Bootstrap
+gem 'bootstrap-sass', '~> 2.1.0.0'
+
+# rspec rails gem for BDD
+gem "rspec-rails", "~> 2.0"
+
+# FactoryGirl replacing fixtures
+gem "factory_girl", "~> 4.1.0"
